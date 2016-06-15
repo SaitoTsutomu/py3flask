@@ -15,7 +15,7 @@ RUN export uid=1000 gid=1000 pswd=scientist && \
     pip3 install -U pip && \
     pip install flask pyjade pyyaml markdown && \
     ln -s /usr/bin/python3.5 /usr/bin/python && \
-    rm -rf /root/.[ac]*
+    rm -rf /root/.[ac]* $HOME/.[ac]*
 USER $USER
 WORKDIR $HOME
 CMD ["/bin/ash"]
