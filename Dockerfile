@@ -1,6 +1,6 @@
 FROM alpine:3.4
 
-ENV USER=scientist HOME=/home/scientist
+ENV USER=scientist HOME=/home/scientist LANG=C.UTF-8
 RUN export uid=1000 gid=1000 pswd=scientist && \
     apk add --no-cache musl python3 sudo && \
     apk add --no-cache --virtual=tzdata_pkg tzdata && \
