@@ -2,7 +2,7 @@ FROM alpine:3.4
 
 ENV USER=scientist HOME=/home/scientist LANG=C.UTF-8
 RUN export uid=1000 gid=1000 pswd=scientist && \
-    apk add --no-cache musl python3 sudo && \
+    apk add --no-cache musl python3 sudo redis py-redis py-gunicorn && \
     apk add --no-cache --virtual=tzdata_pkg tzdata && \
     cp /usr/share/zoneinfo/Japan /etc/localtime && \
     apk del tzdata_pkg && \
@@ -13,7 +13,7 @@ RUN export uid=1000 gid=1000 pswd=scientist && \
     echo "$USER ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/$USER && \
     chmod 0440 /etc/sudoers.d/$USER && \
     pip3 install -U pip && \
-    pip install flask pyjade pyyaml markdown && \
+    pip install flask pyjade pyyaml markdown gunicorn && \
     ln -s /usr/bin/python3.5 /usr/bin/python && \
     rm -rf /root/.[ac]* $HOME/.[ac]*
 USER $USER
