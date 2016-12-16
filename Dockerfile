@@ -12,8 +12,8 @@ RUN export uid=1000 gid=1000 pswd=scientist && \
     echo "$USER:$pswd" | chpasswd && \
     echo "$USER ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/$USER && \
     chmod 0440 /etc/sudoers.d/$USER && \
-    pip3 install -U pip && \
-    pip install flask pyjade pyyaml markdown redis gunicorn && \
+    pip3 install --no-cache-dir -U pip && \
+    pip install --no-cache-dir flask pyjade pyyaml markdown redis gunicorn && \
     rm -rf /root/.[ac]* $HOME/.[ac]*
 USER $USER
 WORKDIR $HOME
