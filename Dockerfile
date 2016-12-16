@@ -2,7 +2,7 @@ FROM alpine:3.4
 
 ENV USER=scientist HOME=/home/scientist LANG=C.UTF-8
 RUN export uid=1000 gid=1000 pswd=scientist && \
-    apk add --no-cache musl python3 sudo redis py-redis py-gunicorn && \
+    apk add --no-cache musl python3 sudo redis && \
     apk add --no-cache --virtual=tzdata_pkg tzdata && \
     cp /usr/share/zoneinfo/Japan /etc/localtime && \
     apk del tzdata_pkg && \
